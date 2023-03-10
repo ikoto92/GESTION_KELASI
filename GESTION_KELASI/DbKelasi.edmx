@@ -1,0 +1,865 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbKelasi.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="anneAcademique">
+          <Key>
+            <PropertyRef Name="codeAn" />
+          </Key>
+          <Property Name="codeAn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="anne" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="classe">
+          <Key>
+            <PropertyRef Name="codeclasse" />
+          </Key>
+          <Property Name="codeclasse" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="classe" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dossier">
+          <Key>
+            <PropertyRef Name="codeDo" />
+          </Key>
+          <Property Name="codeDo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bulletin" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Diplome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="etudiant">
+          <Key>
+            <PropertyRef Name="codeEt" />
+          </Key>
+          <Property Name="codeEt" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NmEt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrnmEt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DtNais" Type="date" Nullable="false" />
+          <Property Name="LieuNais" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sexe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nationalite" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="adresEt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="codeInfScol" Type="nvarchar" MaxLength="20" />
+          <Property Name="codeDo" Type="int" />
+          <Property Name="codeTuteur" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="inscrire">
+          <Key>
+            <PropertyRef Name="IDincription" />
+          </Key>
+          <Property Name="IDincription" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="dtInscription" Type="date" Nullable="false" />
+          <Property Name="fraisInscription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="codeEt" Type="nvarchar" MaxLength="20" />
+          <Property Name="codeclasse" Type="int" />
+          <Property Name="codeAn" Type="int" />
+        </EntityType>
+        <EntityType Name="Moi">
+          <Key>
+            <PropertyRef Name="codeMoi" />
+          </Key>
+          <Property Name="codeMoi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="moi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="montantPayer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dtPaiement" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parcourscolaires">
+          <Key>
+            <PropertyRef Name="codeInfScol" />
+          </Key>
+          <Property Name="codeInfScol" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DipEntre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="classe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AnEt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DerNivEt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DerEstScol" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Profil" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="profil">
+          <Key>
+            <PropertyRef Name="codeprofil" />
+          </Key>
+          <Property Name="codeprofil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomEtPrenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fonction" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="regle">
+          <Key>
+            <PropertyRef Name="CodeRegle" />
+          </Key>
+          <Property Name="CodeRegle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codeAn" Type="int" />
+          <Property Name="codeEt" Type="nvarchar" MaxLength="20" />
+          <Property Name="codeclasse" Type="int" />
+          <Property Name="codeMoi" Type="int" />
+        </EntityType>
+        <EntityType Name="reinscription">
+          <Key>
+            <PropertyRef Name="IDReincription" />
+          </Key>
+          <Property Name="IDReincription" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="dtreinscription" Type="date" Nullable="false" />
+          <Property Name="fraiseinscription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="codeEt" Type="nvarchar" MaxLength="20" />
+          <Property Name="codeclasse" Type="int" />
+          <Property Name="codeAn" Type="int" />
+        </EntityType>
+        <EntityType Name="tuteur">
+          <Key>
+            <PropertyRef Name="codeTuteur" />
+          </Key>
+          <Property Name="codeTuteur" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NmPRPere" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NmPrMere" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdreParent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tuteur" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumTuteur" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lieuParent" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__etudiant__codeDo__3F466844">
+          <End Role="Dossier" Type="Self.Dossier" Multiplicity="0..1" />
+          <End Role="etudiant" Type="Self.etudiant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dossier">
+              <PropertyRef Name="codeDo" />
+            </Principal>
+            <Dependent Role="etudiant">
+              <PropertyRef Name="codeDo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__etudiant__codeIn__3E52440B">
+          <End Role="Parcourscolaires" Type="Self.Parcourscolaires" Multiplicity="0..1" />
+          <End Role="etudiant" Type="Self.etudiant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parcourscolaires">
+              <PropertyRef Name="codeInfScol" />
+            </Principal>
+            <Dependent Role="etudiant">
+              <PropertyRef Name="codeInfScol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__etudiant__codeTu__403A8C7D">
+          <End Role="tuteur" Type="Self.tuteur" Multiplicity="0..1" />
+          <End Role="etudiant" Type="Self.etudiant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tuteur">
+              <PropertyRef Name="codeTuteur" />
+            </Principal>
+            <Dependent Role="etudiant">
+              <PropertyRef Name="codeTuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__inscrire__codeAn__5070F446">
+          <End Role="anneAcademique" Type="Self.anneAcademique" Multiplicity="0..1" />
+          <End Role="inscrire" Type="Self.inscrire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anneAcademique">
+              <PropertyRef Name="codeAn" />
+            </Principal>
+            <Dependent Role="inscrire">
+              <PropertyRef Name="codeAn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__inscrire__codecl__4F7CD00D">
+          <End Role="classe" Type="Self.classe" Multiplicity="0..1" />
+          <End Role="inscrire" Type="Self.inscrire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classe">
+              <PropertyRef Name="codeclasse" />
+            </Principal>
+            <Dependent Role="inscrire">
+              <PropertyRef Name="codeclasse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__inscrire__codeEt__4E88ABD4">
+          <End Role="etudiant" Type="Self.etudiant" Multiplicity="0..1" />
+          <End Role="inscrire" Type="Self.inscrire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etudiant">
+              <PropertyRef Name="codeEt" />
+            </Principal>
+            <Dependent Role="inscrire">
+              <PropertyRef Name="codeEt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__regle__codeAn__48CFD27E">
+          <End Role="anneAcademique" Type="Self.anneAcademique" Multiplicity="0..1" />
+          <End Role="regle" Type="Self.regle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anneAcademique">
+              <PropertyRef Name="codeAn" />
+            </Principal>
+            <Dependent Role="regle">
+              <PropertyRef Name="codeAn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__regle__codeclass__4AB81AF0">
+          <End Role="classe" Type="Self.classe" Multiplicity="0..1" />
+          <End Role="regle" Type="Self.regle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classe">
+              <PropertyRef Name="codeclasse" />
+            </Principal>
+            <Dependent Role="regle">
+              <PropertyRef Name="codeclasse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__regle__codeEt__49C3F6B7">
+          <End Role="etudiant" Type="Self.etudiant" Multiplicity="0..1" />
+          <End Role="regle" Type="Self.regle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etudiant">
+              <PropertyRef Name="codeEt" />
+            </Principal>
+            <Dependent Role="regle">
+              <PropertyRef Name="codeEt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__regle__codeMoi__4BAC3F29">
+          <End Role="Moi" Type="Self.Moi" Multiplicity="0..1" />
+          <End Role="regle" Type="Self.regle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moi">
+              <PropertyRef Name="codeMoi" />
+            </Principal>
+            <Dependent Role="regle">
+              <PropertyRef Name="codeMoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reinscrip__codeA__5DCAEF64">
+          <End Role="anneAcademique" Type="Self.anneAcademique" Multiplicity="0..1" />
+          <End Role="reinscription" Type="Self.reinscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anneAcademique">
+              <PropertyRef Name="codeAn" />
+            </Principal>
+            <Dependent Role="reinscription">
+              <PropertyRef Name="codeAn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reinscrip__codec__5CD6CB2B">
+          <End Role="classe" Type="Self.classe" Multiplicity="0..1" />
+          <End Role="reinscription" Type="Self.reinscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classe">
+              <PropertyRef Name="codeclasse" />
+            </Principal>
+            <Dependent Role="reinscription">
+              <PropertyRef Name="codeclasse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reinscrip__codeE__5BE2A6F2">
+          <End Role="etudiant" Type="Self.etudiant" Multiplicity="0..1" />
+          <End Role="reinscription" Type="Self.reinscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etudiant">
+              <PropertyRef Name="codeEt" />
+            </Principal>
+            <Dependent Role="reinscription">
+              <PropertyRef Name="codeEt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbKelasiStoreContainer">
+          <EntitySet Name="anneAcademique" EntityType="Self.anneAcademique" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="classe" EntityType="Self.classe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dossier" EntityType="Self.Dossier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="etudiant" EntityType="Self.etudiant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inscrire" EntityType="Self.inscrire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moi" EntityType="Self.Moi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parcourscolaires" EntityType="Self.Parcourscolaires" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="profil" EntityType="Self.profil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="regle" EntityType="Self.regle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reinscription" EntityType="Self.reinscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tuteur" EntityType="Self.tuteur" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__etudiant__codeDo__3F466844" Association="Self.FK__etudiant__codeDo__3F466844">
+            <End Role="Dossier" EntitySet="Dossier" />
+            <End Role="etudiant" EntitySet="etudiant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__etudiant__codeIn__3E52440B" Association="Self.FK__etudiant__codeIn__3E52440B">
+            <End Role="Parcourscolaires" EntitySet="Parcourscolaires" />
+            <End Role="etudiant" EntitySet="etudiant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__etudiant__codeTu__403A8C7D" Association="Self.FK__etudiant__codeTu__403A8C7D">
+            <End Role="tuteur" EntitySet="tuteur" />
+            <End Role="etudiant" EntitySet="etudiant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__inscrire__codeAn__5070F446" Association="Self.FK__inscrire__codeAn__5070F446">
+            <End Role="anneAcademique" EntitySet="anneAcademique" />
+            <End Role="inscrire" EntitySet="inscrire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__inscrire__codecl__4F7CD00D" Association="Self.FK__inscrire__codecl__4F7CD00D">
+            <End Role="classe" EntitySet="classe" />
+            <End Role="inscrire" EntitySet="inscrire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__inscrire__codeEt__4E88ABD4" Association="Self.FK__inscrire__codeEt__4E88ABD4">
+            <End Role="etudiant" EntitySet="etudiant" />
+            <End Role="inscrire" EntitySet="inscrire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__regle__codeAn__48CFD27E" Association="Self.FK__regle__codeAn__48CFD27E">
+            <End Role="anneAcademique" EntitySet="anneAcademique" />
+            <End Role="regle" EntitySet="regle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__regle__codeclass__4AB81AF0" Association="Self.FK__regle__codeclass__4AB81AF0">
+            <End Role="classe" EntitySet="classe" />
+            <End Role="regle" EntitySet="regle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__regle__codeEt__49C3F6B7" Association="Self.FK__regle__codeEt__49C3F6B7">
+            <End Role="etudiant" EntitySet="etudiant" />
+            <End Role="regle" EntitySet="regle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__regle__codeMoi__4BAC3F29" Association="Self.FK__regle__codeMoi__4BAC3F29">
+            <End Role="Moi" EntitySet="Moi" />
+            <End Role="regle" EntitySet="regle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reinscrip__codeA__5DCAEF64" Association="Self.FK__reinscrip__codeA__5DCAEF64">
+            <End Role="anneAcademique" EntitySet="anneAcademique" />
+            <End Role="reinscription" EntitySet="reinscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reinscrip__codec__5CD6CB2B" Association="Self.FK__reinscrip__codec__5CD6CB2B">
+            <End Role="classe" EntitySet="classe" />
+            <End Role="reinscription" EntitySet="reinscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reinscrip__codeE__5BE2A6F2" Association="Self.FK__reinscrip__codeE__5BE2A6F2">
+            <End Role="etudiant" EntitySet="etudiant" />
+            <End Role="reinscription" EntitySet="reinscription" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DbKelasi" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DbKelasiContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="anneAcademique" EntityType="DbKelasi.anneAcademique" />
+          <EntitySet Name="classe" EntityType="DbKelasi.classe" />
+          <EntitySet Name="Dossier" EntityType="DbKelasi.Dossier" />
+          <EntitySet Name="etudiant" EntityType="DbKelasi.etudiant" />
+          <EntitySet Name="inscrire" EntityType="DbKelasi.inscrire" />
+          <EntitySet Name="Moi" EntityType="DbKelasi.Moi" />
+          <EntitySet Name="Parcourscolaires" EntityType="DbKelasi.Parcourscolaires" />
+          <EntitySet Name="profil" EntityType="DbKelasi.profil" />
+          <EntitySet Name="regle" EntityType="DbKelasi.regle" />
+          <EntitySet Name="reinscription" EntityType="DbKelasi.reinscription" />
+          <EntitySet Name="tuteur" EntityType="DbKelasi.tuteur" />
+          <AssociationSet Name="FK__inscrire__codeAn__5070F446" Association="DbKelasi.FK__inscrire__codeAn__5070F446">
+            <End Role="anneAcademique" EntitySet="anneAcademique" />
+            <End Role="inscrire" EntitySet="inscrire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__regle__codeAn__48CFD27E" Association="DbKelasi.FK__regle__codeAn__48CFD27E">
+            <End Role="anneAcademique" EntitySet="anneAcademique" />
+            <End Role="regle" EntitySet="regle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reinscrip__codeA__5DCAEF64" Association="DbKelasi.FK__reinscrip__codeA__5DCAEF64">
+            <End Role="anneAcademique" EntitySet="anneAcademique" />
+            <End Role="reinscription" EntitySet="reinscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__inscrire__codecl__4F7CD00D" Association="DbKelasi.FK__inscrire__codecl__4F7CD00D">
+            <End Role="classe" EntitySet="classe" />
+            <End Role="inscrire" EntitySet="inscrire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__regle__codeclass__4AB81AF0" Association="DbKelasi.FK__regle__codeclass__4AB81AF0">
+            <End Role="classe" EntitySet="classe" />
+            <End Role="regle" EntitySet="regle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reinscrip__codec__5CD6CB2B" Association="DbKelasi.FK__reinscrip__codec__5CD6CB2B">
+            <End Role="classe" EntitySet="classe" />
+            <End Role="reinscription" EntitySet="reinscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__etudiant__codeDo__3F466844" Association="DbKelasi.FK__etudiant__codeDo__3F466844">
+            <End Role="Dossier" EntitySet="Dossier" />
+            <End Role="etudiant" EntitySet="etudiant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__etudiant__codeIn__3E52440B" Association="DbKelasi.FK__etudiant__codeIn__3E52440B">
+            <End Role="Parcourscolaires" EntitySet="Parcourscolaires" />
+            <End Role="etudiant" EntitySet="etudiant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__etudiant__codeTu__403A8C7D" Association="DbKelasi.FK__etudiant__codeTu__403A8C7D">
+            <End Role="tuteur" EntitySet="tuteur" />
+            <End Role="etudiant" EntitySet="etudiant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__inscrire__codeEt__4E88ABD4" Association="DbKelasi.FK__inscrire__codeEt__4E88ABD4">
+            <End Role="etudiant" EntitySet="etudiant" />
+            <End Role="inscrire" EntitySet="inscrire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__regle__codeEt__49C3F6B7" Association="DbKelasi.FK__regle__codeEt__49C3F6B7">
+            <End Role="etudiant" EntitySet="etudiant" />
+            <End Role="regle" EntitySet="regle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reinscrip__codeE__5BE2A6F2" Association="DbKelasi.FK__reinscrip__codeE__5BE2A6F2">
+            <End Role="etudiant" EntitySet="etudiant" />
+            <End Role="reinscription" EntitySet="reinscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__regle__codeMoi__4BAC3F29" Association="DbKelasi.FK__regle__codeMoi__4BAC3F29">
+            <End Role="Moi" EntitySet="Moi" />
+            <End Role="regle" EntitySet="regle" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="anneAcademique">
+          <Key>
+            <PropertyRef Name="codeAn" />
+          </Key>
+          <Property Name="codeAn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="anne" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="inscrire" Relationship="DbKelasi.FK__inscrire__codeAn__5070F446" FromRole="anneAcademique" ToRole="inscrire" />
+          <NavigationProperty Name="regle" Relationship="DbKelasi.FK__regle__codeAn__48CFD27E" FromRole="anneAcademique" ToRole="regle" />
+          <NavigationProperty Name="reinscription" Relationship="DbKelasi.FK__reinscrip__codeA__5DCAEF64" FromRole="anneAcademique" ToRole="reinscription" />
+        </EntityType>
+        <EntityType Name="classe">
+          <Key>
+            <PropertyRef Name="codeclasse" />
+          </Key>
+          <Property Name="codeclasse" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="classe1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="inscrire" Relationship="DbKelasi.FK__inscrire__codecl__4F7CD00D" FromRole="classe" ToRole="inscrire" />
+          <NavigationProperty Name="regle" Relationship="DbKelasi.FK__regle__codeclass__4AB81AF0" FromRole="classe" ToRole="regle" />
+          <NavigationProperty Name="reinscription" Relationship="DbKelasi.FK__reinscrip__codec__5CD6CB2B" FromRole="classe" ToRole="reinscription" />
+        </EntityType>
+        <EntityType Name="Dossier">
+          <Key>
+            <PropertyRef Name="codeDo" />
+          </Key>
+          <Property Name="codeDo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bulletin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Diplome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="etudiant" Relationship="DbKelasi.FK__etudiant__codeDo__3F466844" FromRole="Dossier" ToRole="etudiant" />
+        </EntityType>
+        <EntityType Name="etudiant">
+          <Key>
+            <PropertyRef Name="codeEt" />
+          </Key>
+          <Property Name="codeEt" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NmEt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrnmEt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DtNais" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LieuNais" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sexe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nationalite" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adresEt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codeInfScol" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="codeDo" Type="Int32" />
+          <Property Name="codeTuteur" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dossier" Relationship="DbKelasi.FK__etudiant__codeDo__3F466844" FromRole="etudiant" ToRole="Dossier" />
+          <NavigationProperty Name="Parcourscolaires" Relationship="DbKelasi.FK__etudiant__codeIn__3E52440B" FromRole="etudiant" ToRole="Parcourscolaires" />
+          <NavigationProperty Name="tuteur" Relationship="DbKelasi.FK__etudiant__codeTu__403A8C7D" FromRole="etudiant" ToRole="tuteur" />
+          <NavigationProperty Name="inscrire" Relationship="DbKelasi.FK__inscrire__codeEt__4E88ABD4" FromRole="etudiant" ToRole="inscrire" />
+          <NavigationProperty Name="regle" Relationship="DbKelasi.FK__regle__codeEt__49C3F6B7" FromRole="etudiant" ToRole="regle" />
+          <NavigationProperty Name="reinscription" Relationship="DbKelasi.FK__reinscrip__codeE__5BE2A6F2" FromRole="etudiant" ToRole="reinscription" />
+        </EntityType>
+        <EntityType Name="inscrire">
+          <Key>
+            <PropertyRef Name="IDincription" />
+          </Key>
+          <Property Name="IDincription" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dtInscription" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fraisInscription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codeEt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="codeclasse" Type="Int32" />
+          <Property Name="codeAn" Type="Int32" />
+          <NavigationProperty Name="anneAcademique" Relationship="DbKelasi.FK__inscrire__codeAn__5070F446" FromRole="inscrire" ToRole="anneAcademique" />
+          <NavigationProperty Name="classe" Relationship="DbKelasi.FK__inscrire__codecl__4F7CD00D" FromRole="inscrire" ToRole="classe" />
+          <NavigationProperty Name="etudiant" Relationship="DbKelasi.FK__inscrire__codeEt__4E88ABD4" FromRole="inscrire" ToRole="etudiant" />
+        </EntityType>
+        <EntityType Name="Moi">
+          <Key>
+            <PropertyRef Name="codeMoi" />
+          </Key>
+          <Property Name="codeMoi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="moi1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="montantPayer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dtPaiement" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="regle" Relationship="DbKelasi.FK__regle__codeMoi__4BAC3F29" FromRole="Moi" ToRole="regle" />
+        </EntityType>
+        <EntityType Name="Parcourscolaires">
+          <Key>
+            <PropertyRef Name="codeInfScol" />
+          </Key>
+          <Property Name="codeInfScol" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DipEntre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="classe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AnEt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DerNivEt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DerEstScol" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Profil" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="etudiant" Relationship="DbKelasi.FK__etudiant__codeIn__3E52440B" FromRole="Parcourscolaires" ToRole="etudiant" />
+        </EntityType>
+        <EntityType Name="profil">
+          <Key>
+            <PropertyRef Name="codeprofil" />
+          </Key>
+          <Property Name="codeprofil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomEtPrenom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fonction" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="regle">
+          <Key>
+            <PropertyRef Name="CodeRegle" />
+          </Key>
+          <Property Name="CodeRegle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codeAn" Type="Int32" />
+          <Property Name="codeEt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="codeclasse" Type="Int32" />
+          <Property Name="codeMoi" Type="Int32" />
+          <NavigationProperty Name="anneAcademique" Relationship="DbKelasi.FK__regle__codeAn__48CFD27E" FromRole="regle" ToRole="anneAcademique" />
+          <NavigationProperty Name="classe" Relationship="DbKelasi.FK__regle__codeclass__4AB81AF0" FromRole="regle" ToRole="classe" />
+          <NavigationProperty Name="etudiant" Relationship="DbKelasi.FK__regle__codeEt__49C3F6B7" FromRole="regle" ToRole="etudiant" />
+          <NavigationProperty Name="Moi" Relationship="DbKelasi.FK__regle__codeMoi__4BAC3F29" FromRole="regle" ToRole="Moi" />
+        </EntityType>
+        <EntityType Name="reinscription">
+          <Key>
+            <PropertyRef Name="IDReincription" />
+          </Key>
+          <Property Name="IDReincription" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dtreinscription" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fraiseinscription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codeEt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="codeclasse" Type="Int32" />
+          <Property Name="codeAn" Type="Int32" />
+          <NavigationProperty Name="anneAcademique" Relationship="DbKelasi.FK__reinscrip__codeA__5DCAEF64" FromRole="reinscription" ToRole="anneAcademique" />
+          <NavigationProperty Name="classe" Relationship="DbKelasi.FK__reinscrip__codec__5CD6CB2B" FromRole="reinscription" ToRole="classe" />
+          <NavigationProperty Name="etudiant" Relationship="DbKelasi.FK__reinscrip__codeE__5BE2A6F2" FromRole="reinscription" ToRole="etudiant" />
+        </EntityType>
+        <EntityType Name="tuteur">
+          <Key>
+            <PropertyRef Name="codeTuteur" />
+          </Key>
+          <Property Name="codeTuteur" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NmPRPere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NmPrMere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdreParent" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tuteur1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumTuteur" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lieuParent" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="etudiant" Relationship="DbKelasi.FK__etudiant__codeTu__403A8C7D" FromRole="tuteur" ToRole="etudiant" />
+        </EntityType>
+        <Association Name="FK__inscrire__codeAn__5070F446">
+          <End Type="DbKelasi.anneAcademique" Role="anneAcademique" Multiplicity="0..1" />
+          <End Type="DbKelasi.inscrire" Role="inscrire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anneAcademique">
+              <PropertyRef Name="codeAn" />
+            </Principal>
+            <Dependent Role="inscrire">
+              <PropertyRef Name="codeAn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__regle__codeAn__48CFD27E">
+          <End Type="DbKelasi.anneAcademique" Role="anneAcademique" Multiplicity="0..1" />
+          <End Type="DbKelasi.regle" Role="regle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anneAcademique">
+              <PropertyRef Name="codeAn" />
+            </Principal>
+            <Dependent Role="regle">
+              <PropertyRef Name="codeAn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reinscrip__codeA__5DCAEF64">
+          <End Type="DbKelasi.anneAcademique" Role="anneAcademique" Multiplicity="0..1" />
+          <End Type="DbKelasi.reinscription" Role="reinscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anneAcademique">
+              <PropertyRef Name="codeAn" />
+            </Principal>
+            <Dependent Role="reinscription">
+              <PropertyRef Name="codeAn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__inscrire__codecl__4F7CD00D">
+          <End Type="DbKelasi.classe" Role="classe" Multiplicity="0..1" />
+          <End Type="DbKelasi.inscrire" Role="inscrire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classe">
+              <PropertyRef Name="codeclasse" />
+            </Principal>
+            <Dependent Role="inscrire">
+              <PropertyRef Name="codeclasse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__regle__codeclass__4AB81AF0">
+          <End Type="DbKelasi.classe" Role="classe" Multiplicity="0..1" />
+          <End Type="DbKelasi.regle" Role="regle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classe">
+              <PropertyRef Name="codeclasse" />
+            </Principal>
+            <Dependent Role="regle">
+              <PropertyRef Name="codeclasse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reinscrip__codec__5CD6CB2B">
+          <End Type="DbKelasi.classe" Role="classe" Multiplicity="0..1" />
+          <End Type="DbKelasi.reinscription" Role="reinscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classe">
+              <PropertyRef Name="codeclasse" />
+            </Principal>
+            <Dependent Role="reinscription">
+              <PropertyRef Name="codeclasse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__etudiant__codeDo__3F466844">
+          <End Type="DbKelasi.Dossier" Role="Dossier" Multiplicity="0..1" />
+          <End Type="DbKelasi.etudiant" Role="etudiant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dossier">
+              <PropertyRef Name="codeDo" />
+            </Principal>
+            <Dependent Role="etudiant">
+              <PropertyRef Name="codeDo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__etudiant__codeIn__3E52440B">
+          <End Type="DbKelasi.Parcourscolaires" Role="Parcourscolaires" Multiplicity="0..1" />
+          <End Type="DbKelasi.etudiant" Role="etudiant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parcourscolaires">
+              <PropertyRef Name="codeInfScol" />
+            </Principal>
+            <Dependent Role="etudiant">
+              <PropertyRef Name="codeInfScol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__etudiant__codeTu__403A8C7D">
+          <End Type="DbKelasi.tuteur" Role="tuteur" Multiplicity="0..1" />
+          <End Type="DbKelasi.etudiant" Role="etudiant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tuteur">
+              <PropertyRef Name="codeTuteur" />
+            </Principal>
+            <Dependent Role="etudiant">
+              <PropertyRef Name="codeTuteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__inscrire__codeEt__4E88ABD4">
+          <End Type="DbKelasi.etudiant" Role="etudiant" Multiplicity="0..1" />
+          <End Type="DbKelasi.inscrire" Role="inscrire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etudiant">
+              <PropertyRef Name="codeEt" />
+            </Principal>
+            <Dependent Role="inscrire">
+              <PropertyRef Name="codeEt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__regle__codeEt__49C3F6B7">
+          <End Type="DbKelasi.etudiant" Role="etudiant" Multiplicity="0..1" />
+          <End Type="DbKelasi.regle" Role="regle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etudiant">
+              <PropertyRef Name="codeEt" />
+            </Principal>
+            <Dependent Role="regle">
+              <PropertyRef Name="codeEt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reinscrip__codeE__5BE2A6F2">
+          <End Type="DbKelasi.etudiant" Role="etudiant" Multiplicity="0..1" />
+          <End Type="DbKelasi.reinscription" Role="reinscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etudiant">
+              <PropertyRef Name="codeEt" />
+            </Principal>
+            <Dependent Role="reinscription">
+              <PropertyRef Name="codeEt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__regle__codeMoi__4BAC3F29">
+          <End Type="DbKelasi.Moi" Role="Moi" Multiplicity="0..1" />
+          <End Type="DbKelasi.regle" Role="regle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moi">
+              <PropertyRef Name="codeMoi" />
+            </Principal>
+            <Dependent Role="regle">
+              <PropertyRef Name="codeMoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="DbKelasi" />
+        <Alias Key="Target" Value="DbKelasi.Store" />
+        <EntityContainerMapping CdmEntityContainer="DbKelasiContainer" StorageEntityContainer="DbKelasiStoreContainer">
+          <EntitySetMapping Name="anneAcademique">
+            <EntityTypeMapping TypeName="DbKelasi.anneAcademique">
+              <MappingFragment StoreEntitySet="anneAcademique">
+                <ScalarProperty Name="anne" ColumnName="anne" />
+                <ScalarProperty Name="codeAn" ColumnName="codeAn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="classe">
+            <EntityTypeMapping TypeName="DbKelasi.classe">
+              <MappingFragment StoreEntitySet="classe">
+                <ScalarProperty Name="classe1" ColumnName="classe" />
+                <ScalarProperty Name="codeclasse" ColumnName="codeclasse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dossier">
+            <EntityTypeMapping TypeName="DbKelasi.Dossier">
+              <MappingFragment StoreEntitySet="Dossier">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+                <ScalarProperty Name="Bulletin" ColumnName="Bulletin" />
+                <ScalarProperty Name="codeDo" ColumnName="codeDo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="etudiant">
+            <EntityTypeMapping TypeName="DbKelasi.etudiant">
+              <MappingFragment StoreEntitySet="etudiant">
+                <ScalarProperty Name="codeTuteur" ColumnName="codeTuteur" />
+                <ScalarProperty Name="codeDo" ColumnName="codeDo" />
+                <ScalarProperty Name="codeInfScol" ColumnName="codeInfScol" />
+                <ScalarProperty Name="adresEt" ColumnName="adresEt" />
+                <ScalarProperty Name="Nationalite" ColumnName="Nationalite" />
+                <ScalarProperty Name="sexe" ColumnName="sexe" />
+                <ScalarProperty Name="LieuNais" ColumnName="LieuNais" />
+                <ScalarProperty Name="DtNais" ColumnName="DtNais" />
+                <ScalarProperty Name="PrnmEt" ColumnName="PrnmEt" />
+                <ScalarProperty Name="NmEt" ColumnName="NmEt" />
+                <ScalarProperty Name="codeEt" ColumnName="codeEt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inscrire">
+            <EntityTypeMapping TypeName="DbKelasi.inscrire">
+              <MappingFragment StoreEntitySet="inscrire">
+                <ScalarProperty Name="codeAn" ColumnName="codeAn" />
+                <ScalarProperty Name="codeclasse" ColumnName="codeclasse" />
+                <ScalarProperty Name="codeEt" ColumnName="codeEt" />
+                <ScalarProperty Name="fraisInscription" ColumnName="fraisInscription" />
+                <ScalarProperty Name="dtInscription" ColumnName="dtInscription" />
+                <ScalarProperty Name="IDincription" ColumnName="IDincription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moi">
+            <EntityTypeMapping TypeName="DbKelasi.Moi">
+              <MappingFragment StoreEntitySet="Moi">
+                <ScalarProperty Name="dtPaiement" ColumnName="dtPaiement" />
+                <ScalarProperty Name="montantPayer" ColumnName="montantPayer" />
+                <ScalarProperty Name="moi1" ColumnName="moi" />
+                <ScalarProperty Name="codeMoi" ColumnName="codeMoi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parcourscolaires">
+            <EntityTypeMapping TypeName="DbKelasi.Parcourscolaires">
+              <MappingFragment StoreEntitySet="Parcourscolaires">
+                <ScalarProperty Name="Profil" ColumnName="Profil" />
+                <ScalarProperty Name="DerEstScol" ColumnName="DerEstScol" />
+                <ScalarProperty Name="DerNivEt" ColumnName="DerNivEt" />
+                <ScalarProperty Name="AnEt" ColumnName="AnEt" />
+                <ScalarProperty Name="classe" ColumnName="classe" />
+                <ScalarProperty Name="DipEntre" ColumnName="DipEntre" />
+                <ScalarProperty Name="codeInfScol" ColumnName="codeInfScol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profil">
+            <EntityTypeMapping TypeName="DbKelasi.profil">
+              <MappingFragment StoreEntitySet="profil">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="Fonction" ColumnName="Fonction" />
+                <ScalarProperty Name="NomEtPrenom" ColumnName="NomEtPrenom" />
+                <ScalarProperty Name="codeprofil" ColumnName="codeprofil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="regle">
+            <EntityTypeMapping TypeName="DbKelasi.regle">
+              <MappingFragment StoreEntitySet="regle">
+                <ScalarProperty Name="codeMoi" ColumnName="codeMoi" />
+                <ScalarProperty Name="codeclasse" ColumnName="codeclasse" />
+                <ScalarProperty Name="codeEt" ColumnName="codeEt" />
+                <ScalarProperty Name="codeAn" ColumnName="codeAn" />
+                <ScalarProperty Name="CodeRegle" ColumnName="CodeRegle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reinscription">
+            <EntityTypeMapping TypeName="DbKelasi.reinscription">
+              <MappingFragment StoreEntitySet="reinscription">
+                <ScalarProperty Name="codeAn" ColumnName="codeAn" />
+                <ScalarProperty Name="codeclasse" ColumnName="codeclasse" />
+                <ScalarProperty Name="codeEt" ColumnName="codeEt" />
+                <ScalarProperty Name="fraiseinscription" ColumnName="fraiseinscription" />
+                <ScalarProperty Name="dtreinscription" ColumnName="dtreinscription" />
+                <ScalarProperty Name="IDReincription" ColumnName="IDReincription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tuteur">
+            <EntityTypeMapping TypeName="DbKelasi.tuteur">
+              <MappingFragment StoreEntitySet="tuteur">
+                <ScalarProperty Name="lieuParent" ColumnName="lieuParent" />
+                <ScalarProperty Name="NumTuteur" ColumnName="NumTuteur" />
+                <ScalarProperty Name="Tuteur1" ColumnName="Tuteur" />
+                <ScalarProperty Name="AdreParent" ColumnName="AdreParent" />
+                <ScalarProperty Name="NmPrMere" ColumnName="NmPrMere" />
+                <ScalarProperty Name="NmPRPere" ColumnName="NmPRPere" />
+                <ScalarProperty Name="codeTuteur" ColumnName="codeTuteur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

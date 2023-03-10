@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B7BCA2BE-891E-435F-9688-A6560E35769C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GESTION_KELASI</RootNamespace>
+    <AssemblyName>GESTION_KELASI</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="anneAcademique.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="classe.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbKelasi.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbKelasi.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbKelasi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbKelasi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbKelasi.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Dossier.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="etudiant.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="inscrire.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Moi.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parcourscolaires.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_Affiche_Photo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_Affiche_Photo.Designer.cs">
+      <DependentUpon>FRM_Affiche_Photo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_AnneeScolaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_AnneeScolaire.Designer.cs">
+      <DependentUpon>FRM_AjouterModifier_AnneeScolaire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_Classe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_Classe.Designer.cs">
+      <DependentUpon>FRM_AjouterModifier_Classe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_FraisInscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_FraisInscription.Designer.cs">
+      <DependentUpon>FRM_AjouterModifier_FraisInscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_FraisReinscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_FraisReinscription.Designer.cs">
+      <DependentUpon>FRM_AjouterModifier_FraisReinscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_FraisScolaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_FraisScolaire.Designer.cs">
+      <DependentUpon>FRM_AjouterModifier_FraisScolaire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_Inscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_Inscription.Designer.cs">
+      <DependentUpon>FRM_AjouterModifier_Inscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_Reinscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterModifier_Reinscription.Designer.cs">
+      <DependentUpon>FRM_AjouterModifier_Reinscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_AjouterUtilisateur.Designer.cs">
+      <DependentUpon>FRM_AjouterUtilisateur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_MENU_Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_MENU_Principal.Designer.cs">
+      <DependentUpon>FRM_MENU_Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_ModiferUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_ModiferUtilisateur.Designer.cs">
+      <DependentUpon>FRM_ModiferUtilisateur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_Payement_FraisScolaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_Payement_FraisScolaire.Designer.cs">
+      <DependentUpon>FRM_Payement_FraisScolaire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\FRM_SelectReinscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_SelectReinscription.Designer.cs">
+      <DependentUpon>FRM_SelectReinscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\USER_AjouterModifier_Inscription.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\USER_AjouterModifier_Inscription.Designer.cs">
+      <DependentUpon>USER_AjouterModifier_Inscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\USER_AjouterModifier_Reinscription.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\USER_AjouterModifier_Reinscription.Designer.cs">
+      <DependentUpon>USER_AjouterModifier_Reinscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\USER_Page_Accueil.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\USER_Page_Accueil.Designer.cs">
+      <DependentUpon>USER_Page_Accueil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="profil.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="regle.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="reinscription.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tuteur.cs">
+      <DependentUpon>DbKelasi.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="PL\FRM_Affiche_Photo.resx">
+      <DependentUpon>FRM_Affiche_Photo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_AjouterModifier_AnneeScolaire.resx">
+      <DependentUpon>FRM_AjouterModifier_AnneeScolaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_AjouterModifier_Classe.resx">
+      <DependentUpon>FRM_AjouterModifier_Classe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_AjouterModifier_FraisInscription.resx">
+      <DependentUpon>FRM_AjouterModifier_FraisInscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_AjouterModifier_FraisReinscription.resx">
+      <DependentUpon>FRM_AjouterModifier_FraisReinscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_AjouterModifier_FraisScolaire.resx">
+      <DependentUpon>FRM_AjouterModifier_FraisScolaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_AjouterModifier_Inscription.resx">
+      <DependentUpon>FRM_AjouterModifier_Inscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_AjouterModifier_Reinscription.resx">
+      <DependentUpon>FRM_AjouterModifier_Reinscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_AjouterUtilisateur.resx">
+      <DependentUpon>FRM_AjouterUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_MENU_Principal.resx">
+      <DependentUpon>FRM_MENU_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_ModiferUtilisateur.resx">
+      <DependentUpon>FRM_ModiferUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_Payement_FraisScolaire.resx">
+      <DependentUpon>FRM_Payement_FraisScolaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_SelectReinscription.resx">
+      <DependentUpon>FRM_SelectReinscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\USER_AjouterModifier_Inscription.resx">
+      <DependentUpon>USER_AjouterModifier_Inscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\USER_AjouterModifier_Reinscription.resx">
+      <DependentUpon>USER_AjouterModifier_Reinscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\USER_Page_Accueil.resx">
+      <DependentUpon>USER_Page_Accueil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="DbKelasi.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbKelasi.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DbKelasi.edmx.diagram">
+      <DependentUpon>DbKelasi.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DbKelasi.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbKelasi.Context.cs</LastGenOutput>
+      <DependentUpon>DbKelasi.edmx</DependentUpon>
+    </Content>
+    <Content Include="DbKelasi.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbKelasi.cs</LastGenOutput>
+      <DependentUpon>DbKelasi.edmx</DependentUpon>
+    </Content>
+    <None Include="Resources\recycle_256_icon-icons.com_76004 %281%29.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\eye_17943.png" />
+    <None Include="Resources\power_reset_1847.png" />
+    <None Include="Resources\saveall_1204.png" />
+    <None Include="Resources\Imagenes_Alternativa_25573.png" />
+    <None Include="Resources\recyclebinfilled_recycling_full_garbage_1993.png" />
+    <None Include="Resources\list_notes_930.png" />
+    <None Include="Resources\Excel_2013_23480.png" />
+    <None Include="Resources\printerprint_9416.png" />
+    <None Include="Resources\Close_Icon_icon-icons.com_69144.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
