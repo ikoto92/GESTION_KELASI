@@ -451,9 +451,9 @@ namespace GESTION_KELASI.PL
                 reader.Close();
               
 
-                string bulletin = _isCheckedBulletin ? "Oui" : "Non";
-                string diplome = _isCheckedDiplome ? "Oui" : "Non";
-                string photo = _isCheckedPhoto ? "Oui" : "Non";
+                string Bulletin = _isCheckedBulletin ? "Oui" : "Non";
+                string Diplome = _isCheckedDiplome ? "Oui" : "Non";
+                string Photo = _isCheckedPhoto ? "Oui" : "Non";
                 //convertir l'image en format byte
                 //Ajouter un système IO
 
@@ -487,9 +487,9 @@ namespace GESTION_KELASI.PL
                 // Insert data into Dossier table
                 singh.InsertCommand = new SqlCommand("INSERT INTO Dossier (codeDo, Bulletin, Diplome, Photo) VALUES (@codeDo, @Bulletin, @Diplome, @Photo)", com);
                 singh.InsertCommand.Parameters.AddWithValue("@codeDo", TxtID_Dossier.Text);
-                singh.InsertCommand.Parameters.AddWithValue("@Bulletin", bulletin);
-                singh.InsertCommand.Parameters.AddWithValue("@Diplome", diplome);
-                singh.InsertCommand.Parameters.AddWithValue("@Photo", photo);
+                singh.InsertCommand.Parameters.AddWithValue("@Bulletin", Bulletin);
+                singh.InsertCommand.Parameters.AddWithValue("@Diplome", Diplome);
+                singh.InsertCommand.Parameters.AddWithValue("@Photo", Photo);
                 singh.InsertCommand.ExecuteNonQuery();
                 singh.InsertCommand.Parameters.Clear();
 
@@ -802,18 +802,20 @@ namespace GESTION_KELASI.PL
                 {
                     com.Open();
 
-                    string bulletin = _isCheckedBulletin ? "Oui" : "Non";
-                    string diplome = _isCheckedDiplome ? "Oui" : "Non";
-                    string photo = _isCheckedPhoto ? "Oui" : "Non";
+                    string Bulletin = _isCheckedBulletin ? "Oui" : "Non";
+                    string Diplome = _isCheckedDiplome ? "Oui" : "Non";
+                    string Photo = _isCheckedPhoto ? "Oui" : "Non";
                     //convertir l'image en format byte
                     //Ajouter un système IO
 
                     //convertir l'image en format byte
                     MemoryStream MR = new MemoryStream();
                     P_Photo.Image.Save(MR, P_Photo.Image.RawFormat);
+                   // P_Photo.Image.Save(MR, P_Photo.Image.RawFormat);
                     byte[] ByteImage = MR.ToArray();               
 
-                    // // Update data in Parcourscolaires table
+                    // Update data in Parcourscolaires table
+
                     singh.UpdateCommand = new SqlCommand("UPDATE Parcourscolaires SET  DipEntre = @DipEntre, AnEt=@AnEt, DerNivEt=@DerNivEt, DerEstScol=@DerEstScol, Profil=@Profil WHERE codeInfScol=@codeInfScol)", com);
                     singh.UpdateCommand.Parameters.AddWithValue("@codeInfScol", Txt_IDParScolaire.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@DipEntre", TxtDernierDipl.Text);
@@ -827,9 +829,9 @@ namespace GESTION_KELASI.PL
                     // Update data in Dossier table
                     singh.UpdateCommand = new SqlCommand("UPDATE Dossier SET Bulletin = @Bulletin, Diplome = @Diplome, Photo = @Photo WHERE codeDo=@codeDo)", com);
                     singh.UpdateCommand.Parameters.AddWithValue("@codeDo", TxtID_Dossier.Text);
-                    singh.UpdateCommand.Parameters.AddWithValue("@Bulletin", bulletin);
-                    singh.UpdateCommand.Parameters.AddWithValue("@Diplome", diplome);
-                    singh.UpdateCommand.Parameters.AddWithValue("@Photo", photo);
+                    singh.UpdateCommand.Parameters.AddWithValue("@Bulletin", Bulletin);
+                    singh.UpdateCommand.Parameters.AddWithValue("@Diplome", Diplome);
+                    singh.UpdateCommand.Parameters.AddWithValue("@Photo", Photo);
                     singh.UpdateCommand.ExecuteNonQuery();
                     //singh.UpdateCommand.Parameters.Clear();
 
@@ -846,7 +848,7 @@ namespace GESTION_KELASI.PL
                     //singh.UpdateCommand.Parameters.Clear();
 
                     // Update data in etudiant table
-                    singh.UpdateCommand = new SqlCommand("UPDATE etudiant SET NmEt=@NmEt, PrnmEt=@PrnmEt, DtNais=@DtNais, LieuNais=@LieuNais, sexe=@sexe, Nationalite=@Nationalite, adresEt=@adresEt, photo=@photo, codeInfScol=@codeInfScol, codeDo=@codeDo, codeTuteur=@codeTuteur WHERE codeEt=@codeEt)", com);
+                    singh.UpdateCommand = new SqlCommand("UPDATE etudiant SET NmEt=@NmEt, PrnmEt=@PrnmEt, DtNais=@DtNais, LieuNais=@LieuNais, sexe=@sexe, Nationalite=@Nationalite, adresEt=@adresEt, photo=@Photo, codeInfScol=@codeInfScol, codeDo=@codeDo, codeTuteur=@codeTuteur WHERE codeEt=@codeEt)", com);
                     singh.UpdateCommand.Parameters.AddWithValue("@codeEt", Txt_IDEtudiant.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@NmEt", TxtNomEleve.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@PrnmEt", TxtPrenomEleve.Text);
@@ -855,10 +857,11 @@ namespace GESTION_KELASI.PL
                     singh.UpdateCommand.Parameters.AddWithValue("@sexe", CbbSexe.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@Nationalite", TxtNationalite.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@adresEt", TxtAdressParent.Text);
-                    singh.UpdateCommand.Parameters.AddWithValue("@photo", ByteImage);
+                    singh.UpdateCommand.Parameters.AddWithValue("@Photo", ByteImage);
                     singh.UpdateCommand.Parameters.AddWithValue("@codeInfScol", Txt_IDParScolaire.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@codeDo", TxtID_Dossier.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@codeTuteur", Txt_IDTuteur.Text);
+                    
                     // Verify that the age of the student is greater than 4 years
                     TimeSpan age = DateTime.Now - Convert.ToDateTime(DtmNaissance.Text);
                     if (age.TotalDays < 365 * 4)
@@ -880,6 +883,7 @@ namespace GESTION_KELASI.PL
                     singh.UpdateCommand.Parameters.AddWithValue("@codeclasse", Convert.ToString(Cmb_Classe.SelectedValue));
                     singh.UpdateCommand.ExecuteNonQuery();
                     // singh.UpdateCommand.Parameters.Clear();
+                   
                     com.Close();
 
                     MessageBox.Show("Votre mise à jour a été effectué avec succès");

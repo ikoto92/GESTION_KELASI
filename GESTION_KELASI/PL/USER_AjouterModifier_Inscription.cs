@@ -229,6 +229,7 @@ namespace GESTION_KELASI.PL
                         if (reader.Read())
                         {
                             byte[] imageData = (byte[])reader["photo"];
+
                             if (imageData != null)
                             {
 

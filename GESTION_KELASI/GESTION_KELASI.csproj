@@ -157,6 +157,12 @@
     <Compile Include="PL\FRM_ModiferUtilisateur.Designer.cs">
       <DependentUpon>FRM_ModiferUtilisateur.cs</DependentUpon>
     </Compile>
+    <Compile Include="PL\FRM_PageConnexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\FRM_PageConnexion.Designer.cs">
+      <DependentUpon>FRM_PageConnexion.cs</DependentUpon>
+    </Compile>
     <Compile Include="PL\FRM_Payement_FraisScolaire.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PL\FRM_ModiferUtilisateur.resx">
       <DependentUpon>FRM_ModiferUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\FRM_PageConnexion.resx">
+      <DependentUpon>FRM_PageConnexion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PL\FRM_Payement_FraisScolaire.resx">
       <DependentUpon>FRM_Payement_FraisScolaire.cs</DependentUpon>

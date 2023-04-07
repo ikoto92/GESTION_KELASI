@@ -833,7 +833,7 @@
             // 
             this.Lb_AfficherI.AutoSize = true;
             this.Lb_AfficherI.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lb_AfficherI.Location = new System.Drawing.Point(177, 15);
+            this.Lb_AfficherI.Location = new System.Drawing.Point(187, 15);
             this.Lb_AfficherI.Name = "Lb_AfficherI";
             this.Lb_AfficherI.Size = new System.Drawing.Size(321, 35);
             this.Lb_AfficherI.TabIndex = 0;

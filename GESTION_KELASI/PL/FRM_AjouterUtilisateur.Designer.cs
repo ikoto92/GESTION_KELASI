@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Btn_Close = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.Cmbb_Fonction = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.LbtErreur = new System.Windows.Forms.Label();
-            this.Btn_Close = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +60,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(419, 30);
             this.panel1.TabIndex = 0;
+            // 
+            // Btn_Close
+            // 
+            this.Btn_Close.FlatAppearance.BorderSize = 0;
+            this.Btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Close.Image = global::GESTION_KELASI.Properties.Resources.Close_Icon_icon_icons_com_69144;
+            this.Btn_Close.Location = new System.Drawing.Point(390, 3);
+            this.Btn_Close.Name = "Btn_Close";
+            this.Btn_Close.Size = new System.Drawing.Size(26, 23);
+            this.Btn_Close.TabIndex = 8;
+            this.Btn_Close.UseVisualStyleBackColor = true;
+            this.Btn_Close.Click += new System.EventHandler(this.Btn_Close_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -127,7 +139,7 @@
             this.Txt_Login.Name = "Txt_Login";
             this.Txt_Login.Size = new System.Drawing.Size(319, 25);
             this.Txt_Login.TabIndex = 4;
-            this.Txt_Login.TextChanged += new System.EventHandler(this.Txt_Login_TextChanged);
+          
             // 
             // label5
             // 
@@ -170,13 +182,14 @@
             // 
             // Btn_Enregistrer
             // 
-            this.Btn_Enregistrer.BackColor = System.Drawing.Color.Lime;
+            this.Btn_Enregistrer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.Btn_Enregistrer.FlatAppearance.BorderSize = 0;
             this.Btn_Enregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Enregistrer.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Enregistrer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Btn_Enregistrer.Location = new System.Drawing.Point(52, 414);
             this.Btn_Enregistrer.Name = "Btn_Enregistrer";
-            this.Btn_Enregistrer.Size = new System.Drawing.Size(118, 23);
+            this.Btn_Enregistrer.Size = new System.Drawing.Size(148, 32);
             this.Btn_Enregistrer.TabIndex = 5;
             this.Btn_Enregistrer.Text = "Enregistrer";
             this.Btn_Enregistrer.UseVisualStyleBackColor = false;
@@ -189,9 +202,9 @@
             this.Btn_Annuller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Annuller.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Annuller.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.Btn_Annuller.Location = new System.Drawing.Point(253, 414);
+            this.Btn_Annuller.Location = new System.Drawing.Point(225, 414);
             this.Btn_Annuller.Name = "Btn_Annuller";
-            this.Btn_Annuller.Size = new System.Drawing.Size(118, 23);
+            this.Btn_Annuller.Size = new System.Drawing.Size(146, 32);
             this.Btn_Annuller.TabIndex = 6;
             this.Btn_Annuller.Text = "Annuller";
             this.Btn_Annuller.UseVisualStyleBackColor = false;
@@ -223,18 +236,6 @@
             this.LbtErreur.Size = new System.Drawing.Size(39, 16);
             this.LbtErreur.TabIndex = 8;
             this.LbtErreur.Text = "label7";
-            // 
-            // Btn_Close
-            // 
-            this.Btn_Close.FlatAppearance.BorderSize = 0;
-            this.Btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Close.Image = global::GESTION_KELASI.Properties.Resources.Close_Icon_icon_icons_com_69144;
-            this.Btn_Close.Location = new System.Drawing.Point(390, 3);
-            this.Btn_Close.Name = "Btn_Close";
-            this.Btn_Close.Size = new System.Drawing.Size(26, 23);
-            this.Btn_Close.TabIndex = 8;
-            this.Btn_Close.UseVisualStyleBackColor = true;
-            this.Btn_Close.Click += new System.EventHandler(this.Btn_Close_Click);
             // 
             // FRM_AjouterUtilisateur
             // 

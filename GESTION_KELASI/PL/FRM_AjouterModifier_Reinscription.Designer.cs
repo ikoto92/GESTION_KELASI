@@ -187,9 +187,9 @@
             this.groupBox5.Controls.Add(this.RB_Nouveau);
             this.groupBox5.Controls.Add(this.RB_Ancien);
             this.groupBox5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(310, 22);
+            this.groupBox5.Location = new System.Drawing.Point(526, 18);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(308, 92);
+            this.groupBox5.Size = new System.Drawing.Size(174, 92);
             this.groupBox5.TabIndex = 22;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Profil de L\'Eleve";
@@ -198,7 +198,7 @@
             // 
             this.RB_Nouveau.AutoSize = true;
             this.RB_Nouveau.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RB_Nouveau.Location = new System.Drawing.Point(106, 50);
+            this.RB_Nouveau.Location = new System.Drawing.Point(38, 50);
             this.RB_Nouveau.Name = "RB_Nouveau";
             this.RB_Nouveau.Size = new System.Drawing.Size(76, 22);
             this.RB_Nouveau.TabIndex = 0;
@@ -211,7 +211,7 @@
             // 
             this.RB_Ancien.AutoSize = true;
             this.RB_Ancien.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RB_Ancien.Location = new System.Drawing.Point(106, 22);
+            this.RB_Ancien.Location = new System.Drawing.Point(38, 22);
             this.RB_Ancien.Name = "RB_Ancien";
             this.RB_Ancien.Size = new System.Drawing.Size(89, 22);
             this.RB_Ancien.TabIndex = 0;
