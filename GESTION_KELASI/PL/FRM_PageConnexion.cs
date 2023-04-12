@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace GESTION_KELASI.PL
 {
     public partial class FRM_PageConnexion : Form
     {
+        SqlConnection com = new SqlConnection("Data source=DESKTOP-2717K4D\\SQLEXPRESS; initial catalog=GestionKelasi; integrated security =true ");
+        SqlDataAdapter singh = new SqlDataAdapter();
+        SqlDataReader dr;
         public FRM_PageConnexion()
         {
             InitializeComponent();
