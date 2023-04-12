@@ -198,7 +198,7 @@ namespace GESTION_KELASI.PL
                                 MessageBox.Show("Aucune photo trouvée pour l'étudiant sélectionné");
                             }
                         }
-                        else
+                         else
                         {
                             MessageBox.Show("Aucune information trouvée pour l'étudiant sélectionné");
                         }

@@ -35,6 +35,7 @@
             this.Lbl_afficher = new System.Windows.Forms.Label();
             this.Btn_Select = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.DtmNaissance = new System.Windows.Forms.DateTimePicker();
             this.TxTID_FraisReinscrption = new System.Windows.Forms.TextBox();
             this.TxtID_Reinscription = new System.Windows.Forms.TextBox();
             this.Txt_IDEtudiant = new System.Windows.Forms.TextBox();
@@ -47,7 +48,6 @@
             this.TxtLieuNaissance = new System.Windows.Forms.TextBox();
             this.CbbSexe = new System.Windows.Forms.ComboBox();
             this.TxtNationalite = new System.Windows.Forms.TextBox();
-            this.DtmNaissance = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -133,6 +133,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.DtmNaissance);
             this.groupBox3.Controls.Add(this.TxTID_FraisReinscrption);
             this.groupBox3.Controls.Add(this.TxtID_Reinscription);
             this.groupBox3.Controls.Add(this.Txt_IDEtudiant);
@@ -143,7 +144,6 @@
             this.groupBox3.Controls.Add(this.TxtLieuNaissance);
             this.groupBox3.Controls.Add(this.CbbSexe);
             this.groupBox3.Controls.Add(this.TxtNationalite);
-            this.groupBox3.Controls.Add(this.DtmNaissance);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label4);
@@ -157,6 +157,16 @@
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Information personnel de l\'Elève";
+            // 
+            // DtmNaissance
+            // 
+            this.DtmNaissance.Enabled = false;
+            this.DtmNaissance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DtmNaissance.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtmNaissance.Location = new System.Drawing.Point(120, 229);
+            this.DtmNaissance.Name = "DtmNaissance";
+            this.DtmNaissance.Size = new System.Drawing.Size(235, 20);
+            this.DtmNaissance.TabIndex = 24;
             // 
             // TxTID_FraisReinscrption
             // 
@@ -222,6 +232,7 @@
             // 
             // TxtNomEleve
             // 
+            this.TxtNomEleve.Enabled = false;
             this.TxtNomEleve.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNomEleve.Location = new System.Drawing.Point(120, 197);
             this.TxtNomEleve.Multiline = true;
@@ -231,6 +242,7 @@
             // 
             // TxtPrenomEleve
             // 
+            this.TxtPrenomEleve.Enabled = false;
             this.TxtPrenomEleve.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtPrenomEleve.Location = new System.Drawing.Point(467, 199);
             this.TxtPrenomEleve.Multiline = true;
@@ -250,6 +262,7 @@
             // 
             // TxtLieuNaissance
             // 
+            this.TxtLieuNaissance.Enabled = false;
             this.TxtLieuNaissance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtLieuNaissance.Location = new System.Drawing.Point(467, 229);
             this.TxtLieuNaissance.Multiline = true;
@@ -260,6 +273,7 @@
             // CbbSexe
             // 
             this.CbbSexe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbbSexe.Enabled = false;
             this.CbbSexe.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbbSexe.FormattingEnabled = true;
             this.CbbSexe.Items.AddRange(new object[] {
@@ -273,21 +287,13 @@
             // 
             // TxtNationalite
             // 
+            this.TxtNationalite.Enabled = false;
             this.TxtNationalite.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNationalite.Location = new System.Drawing.Point(467, 262);
             this.TxtNationalite.Multiline = true;
             this.TxtNationalite.Name = "TxtNationalite";
             this.TxtNationalite.Size = new System.Drawing.Size(251, 20);
             this.TxtNationalite.TabIndex = 7;
-            // 
-            // DtmNaissance
-            // 
-            this.DtmNaissance.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtmNaissance.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtmNaissance.Location = new System.Drawing.Point(120, 227);
-            this.DtmNaissance.Name = "DtmNaissance";
-            this.DtmNaissance.Size = new System.Drawing.Size(227, 20);
-            this.DtmNaissance.TabIndex = 17;
             // 
             // label2
             // 
@@ -537,7 +543,6 @@
         public System.Windows.Forms.TextBox TxtLieuNaissance;
         public System.Windows.Forms.ComboBox CbbSexe;
         public System.Windows.Forms.TextBox TxtNationalite;
-        public System.Windows.Forms.DateTimePicker DtmNaissance;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -559,8 +564,9 @@
         public System.Windows.Forms.Button Btn_Select;
         public System.Windows.Forms.Label Lbl_afficher;
         public System.Windows.Forms.TextBox Txt_IDEtudiant;
-        private System.Windows.Forms.TextBox TxTID_FraisReinscrption;
-        private System.Windows.Forms.TextBox TxtID_Reinscription;
         private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.TextBox TxTID_FraisReinscrption;
+        public System.Windows.Forms.TextBox TxtID_Reinscription;
+        public System.Windows.Forms.DateTimePicker DtmNaissance;
     }
 }

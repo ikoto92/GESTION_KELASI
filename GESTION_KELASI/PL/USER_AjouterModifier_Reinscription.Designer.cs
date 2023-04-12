@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DTGV_Reinscription = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -57,7 +57,7 @@
             this.Btn_Reinscription = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Btn_Photo = new System.Windows.Forms.Button();
-            this.Btn_SupprimerI = new System.Windows.Forms.Button();
+            this.Btn_SupprimerR = new System.Windows.Forms.Button();
             this.Btn_Imprimer = new System.Windows.Forms.Button();
             this.Btn_ImpExel = new System.Windows.Forms.Button();
             this.Btn_ImprimerTout = new System.Windows.Forms.Button();
@@ -82,14 +82,14 @@
             this.DTGV_Reinscription.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.DTGV_Reinscription.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.DTGV_Reinscription.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DTGV_Reinscription.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(117)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DTGV_Reinscription.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DTGV_Reinscription.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DTGV_Reinscription.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -239,6 +239,7 @@
             this.Btn_ModifierEleve.TabIndex = 23;
             this.Btn_ModifierEleve.Text = "Modifier";
             this.Btn_ModifierEleve.UseVisualStyleBackColor = false;
+            this.Btn_ModifierEleve.Click += new System.EventHandler(this.Btn_ModifierEleve_Click);
             // 
             // label2
             // 
@@ -297,7 +298,7 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel3.Controls.Add(this.Btn_Photo);
-            this.panel3.Controls.Add(this.Btn_SupprimerI);
+            this.panel3.Controls.Add(this.Btn_SupprimerR);
             this.panel3.Controls.Add(this.Btn_Imprimer);
             this.panel3.Controls.Add(this.Btn_ImpExel);
             this.panel3.Controls.Add(this.Btn_ImprimerTout);
@@ -316,17 +317,19 @@
             this.Btn_Photo.Size = new System.Drawing.Size(33, 32);
             this.Btn_Photo.TabIndex = 8;
             this.Btn_Photo.UseVisualStyleBackColor = true;
+            this.Btn_Photo.Click += new System.EventHandler(this.Btn_Photo_Click);
             // 
-            // Btn_SupprimerI
+            // Btn_SupprimerR
             // 
-            this.Btn_SupprimerI.FlatAppearance.BorderSize = 0;
-            this.Btn_SupprimerI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_SupprimerI.Image = global::GESTION_KELASI.Properties.Resources.recyclebinfilled_recycling_full_garbage_1993;
-            this.Btn_SupprimerI.Location = new System.Drawing.Point(175, 12);
-            this.Btn_SupprimerI.Name = "Btn_SupprimerI";
-            this.Btn_SupprimerI.Size = new System.Drawing.Size(38, 31);
-            this.Btn_SupprimerI.TabIndex = 8;
-            this.Btn_SupprimerI.UseVisualStyleBackColor = true;
+            this.Btn_SupprimerR.FlatAppearance.BorderSize = 0;
+            this.Btn_SupprimerR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_SupprimerR.Image = global::GESTION_KELASI.Properties.Resources.recyclebinfilled_recycling_full_garbage_1993;
+            this.Btn_SupprimerR.Location = new System.Drawing.Point(175, 12);
+            this.Btn_SupprimerR.Name = "Btn_SupprimerR";
+            this.Btn_SupprimerR.Size = new System.Drawing.Size(38, 31);
+            this.Btn_SupprimerR.TabIndex = 8;
+            this.Btn_SupprimerR.UseVisualStyleBackColor = true;
+            this.Btn_SupprimerR.Click += new System.EventHandler(this.Btn_SupprimerR_Click);
             // 
             // Btn_Imprimer
             // 
@@ -428,7 +431,7 @@
         private System.Windows.Forms.Button Btn_Reinscription;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button Btn_Photo;
-        private System.Windows.Forms.Button Btn_SupprimerI;
+        private System.Windows.Forms.Button Btn_SupprimerR;
         private System.Windows.Forms.Button Btn_Imprimer;
         private System.Windows.Forms.Button Btn_ImpExel;
         private System.Windows.Forms.Button Btn_ImprimerTout;

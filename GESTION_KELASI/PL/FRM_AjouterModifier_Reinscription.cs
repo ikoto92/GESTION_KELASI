@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -133,7 +134,67 @@ namespace GESTION_KELASI.PL
 
         private void Btn_Valider_Click(object sender, EventArgs e)
         {
+            // Vérifier si l'ID de l'étudiant est vide
+            if (string.IsNullOrEmpty(Txt_IDEtudiant.Text))
+            {
+                MessageBox.Show("Veuillez sélectionner un étudiant à modifier.");
+                return;
+            }
 
+            // Vérifier si la classe et l'année scolaire ont été sélectionnées
+            if (Cmb_Classe.SelectedIndex == -1 || Cmb_AnneeScolaire.SelectedIndex == -1)
+            {
+                MessageBox.Show("Veuillez sélectionner la classe et l'année scolaire.");
+                return;
+            }
+
+            // Vérifier si le RadioButton a été sélectionné
+            if (!RB_Ancien.Checked && !RB_Nouveau.Checked)
+            {
+                MessageBox.Show("Veuillez sélectionner un profil.");
+                return;
+            }
+
+            // Vérifier si l'élève avec cet ID existe dans la base de données
+            SqlConnection con = new SqlConnection("Data source=DESKTOP-2717K4D\\SQLEXPRESS; initial catalog=GestionKelasi; integrated security =true ");
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM etudiant WHERE codeEt = @CodeEtudiant", con);
+            cmd.Parameters.AddWithValue("@CodeEtudiant", Txt_IDEtudiant.Text);
+            con.Open();
+            int count = (int)cmd.ExecuteScalar();
+            con.Close();
+
+            if (count == 0)
+            {
+                MessageBox.Show("Aucun élève avec cet ID n'a été trouvé dans la base de données.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Demander confirmation avant la mise à jour
+            DialogResult result = MessageBox.Show("Êtes-vous sûr de vouloir modifier l'inscription de cet étudiant ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+
+            // Effectuer la mise à jour dans la base de données
+            con.Open();
+            cmd = new SqlCommand("UPDATE reinscription SET CodeFraisRe = @CodeFraisRe, profil = @Profil WHERE codeEt = @CodeEt AND codeclasse = @CodeClasse AND codeAn = @CodeAn", con);
+            cmd.Parameters.AddWithValue("@CodeFraisRe", TxTID_FraisReinscrption.Text);
+            cmd.Parameters.AddWithValue("@Profil", Profil);
+            cmd.Parameters.AddWithValue("@CodeEt", Txt_IDEtudiant.Text);
+            cmd.Parameters.AddWithValue("@CodeClasse", Cmb_Classe.SelectedValue.ToString());
+            cmd.Parameters.AddWithValue("@CodeAn", Cmb_AnneeScolaire.SelectedValue.ToString());
+            int rowsAffected = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (rowsAffected > 0)
+            {
+                MessageBox.Show("L'inscription a été modifiée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Erreur lors de la modification de l'inscription.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Btn_Enregistrer_Click(object sender, EventArgs e)

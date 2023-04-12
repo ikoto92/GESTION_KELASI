@@ -816,7 +816,7 @@ namespace GESTION_KELASI.PL
 
                     // Update data in Parcourscolaires table
 
-                    singh.UpdateCommand = new SqlCommand("UPDATE Parcourscolaires SET  DipEntre = @DipEntre, AnEt=@AnEt, DerNivEt=@DerNivEt, DerEstScol=@DerEstScol, Profil=@Profil WHERE codeInfScol=@codeInfScol)", com);
+                    singh.UpdateCommand = new SqlCommand("UPDATE Parcourscolaires SET  DipEntre = @DipEntre, AnEt=@AnEt, DerNivEt=@DerNivEt, DerEstScol=@DerEstScol, Profil=@Profil WHERE codeInfScol=@codeInfScol", com);
                     singh.UpdateCommand.Parameters.AddWithValue("@codeInfScol", Txt_IDParScolaire.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@DipEntre", TxtDernierDipl.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@AnEt", TxtAnnee.Text);
@@ -827,7 +827,7 @@ namespace GESTION_KELASI.PL
                     //singh.UpdateCommand.Parameters.Clear();
 
                     // Update data in Dossier table
-                    singh.UpdateCommand = new SqlCommand("UPDATE Dossier SET Bulletin = @Bulletin, Diplome = @Diplome, Photo = @Photo WHERE codeDo=@codeDo)", com);
+                    singh.UpdateCommand = new SqlCommand("UPDATE Dossier SET Bulletin = @Bulletin, Diplome = @Diplome, Photo = @Photo WHERE codeDo=@codeDo", com);
                     singh.UpdateCommand.Parameters.AddWithValue("@codeDo", TxtID_Dossier.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@Bulletin", Bulletin);
                     singh.UpdateCommand.Parameters.AddWithValue("@Diplome", Diplome);
@@ -836,7 +836,7 @@ namespace GESTION_KELASI.PL
                     //singh.UpdateCommand.Parameters.Clear();
 
                     // Update data in tuteur table
-                    singh.UpdateCommand = new SqlCommand("UPDATE tuteur SET NmPRPere=@NmPRPere, NmPrMere=@NmPrMere, AdreParent=@AdreParent, Tuteur=@Tuteur, NumTuteur=@NumTuteur, lieuParent=@lieuParent WHERE codeTuteur=@codeTuteur)", com);
+                    singh.UpdateCommand = new SqlCommand("UPDATE tuteur SET NmPRPere=@NmPRPere, NmPrMere=@NmPrMere, AdreParent=@AdreParent, Tuteur=@Tuteur, NumTuteur=@NumTuteur, lieuParent=@lieuParent WHERE codeTuteur=@codeTuteur", com);
                     singh.UpdateCommand.Parameters.AddWithValue("@codeTuteur", Txt_IDTuteur.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@NmPRPere", TxtNomPere.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@NmPrMere", TxtNomMere.Text);
@@ -848,7 +848,7 @@ namespace GESTION_KELASI.PL
                     //singh.UpdateCommand.Parameters.Clear();
 
                     // Update data in etudiant table
-                    singh.UpdateCommand = new SqlCommand("UPDATE etudiant SET NmEt=@NmEt, PrnmEt=@PrnmEt, DtNais=@DtNais, LieuNais=@LieuNais, sexe=@sexe, Nationalite=@Nationalite, adresEt=@adresEt, photo=@Photo, codeInfScol=@codeInfScol, codeDo=@codeDo, codeTuteur=@codeTuteur WHERE codeEt=@codeEt)", com);
+                    singh.UpdateCommand = new SqlCommand("UPDATE etudiant SET NmEt=@NmEt, PrnmEt=@PrnmEt, DtNais=@DtNais, LieuNais=@LieuNais, sexe=@sexe, Nationalite=@Nationalite, adresEt=@adresEt, photo=@Photo, codeInfScol=@codeInfScol, codeDo=@codeDo, codeTuteur=@codeTuteur WHERE codeEt=@codeEt", com);
                     singh.UpdateCommand.Parameters.AddWithValue("@codeEt", Txt_IDEtudiant.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@NmEt", TxtNomEleve.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@PrnmEt", TxtPrenomEleve.Text);
@@ -874,7 +874,7 @@ namespace GESTION_KELASI.PL
 
                
                     // // Update data in inscrire table
-                    singh.UpdateCommand = new SqlCommand("UPDATE inscrire SET dtInscription=@dtInscription, codeEt=@CodeEt, codeAn=@codeAn, CodeFraisI=@CodeFraisI, codeclasse=@codeclasse WHERE IDincription=@IDincription)", com);
+                    singh.UpdateCommand = new SqlCommand("UPDATE inscrire SET dtInscription=@dtInscription, codeEt=@CodeEt, codeAn=@codeAn, CodeFraisI=@CodeFraisI, codeclasse=@codeclasse WHERE IDincription=@IDincription", com);
                     singh.UpdateCommand.Parameters.AddWithValue("@IDincription", Txt_IDInscription.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@dtInscription", Lbl_Time.Text);
                     singh.UpdateCommand.Parameters.AddWithValue("@CodeEt", Txt_IDEtudiant.Text);
@@ -886,7 +886,7 @@ namespace GESTION_KELASI.PL
                    
                     com.Close();
 
-                    MessageBox.Show("Votre mise à jour a été effectué avec succès");
+                    MessageBox.Show("La modification a été effectué avec succès");
                     Close();   
                 }
                 else if (result == DialogResult.No)

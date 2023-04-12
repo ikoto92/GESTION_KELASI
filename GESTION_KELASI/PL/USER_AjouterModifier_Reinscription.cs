@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 
 namespace GESTION_KELASI.PL
@@ -109,6 +110,188 @@ namespace GESTION_KELASI.PL
                 DTGV_Reinscription.Rows.Add(false, dr.GetValue(0), dr.GetValue(1), dr.GetValue(2), dr.GetValue(3), dr.GetValue(4), dr.GetValue(5), dr.GetValue(6), dr.GetValue(7), dr.GetValue(8), dr.GetValue(9), dr.GetValue(10), dr.GetValue(11), dr.GetValue(12), dr.GetValue(13), dr.GetValue(14), dr.GetValue(15), dr.GetValue(16));
             }
             com.Close();
+        }
+
+        public string SelectVerif()
+        {
+            int NombreligneSelect = 0;
+
+            for (int i = 0; i < DTGV_Reinscription.Rows.Count; i++)
+            {
+                if ((bool)DTGV_Reinscription.Rows[i].Cells[0].Value == true)
+                {
+                    NombreligneSelect++;
+                }
+            }
+            if (NombreligneSelect == 0)
+            {
+                return "Selectionné une seule ligne que vous voulez modifier";
+            }
+            if (NombreligneSelect > 1)
+            {
+                return "Selectionné une seule ligne pour modifier";
+            }
+            return null;
+        }
+
+        private void Btn_ModifierEleve_Click(object sender, EventArgs e)
+        {
+            PL.FRM_AjouterModifier_Reinscription FRMM = new PL.FRM_AjouterModifier_Reinscription();
+
+            if (SelectVerif() == null)
+            {
+                for (int i = 0; i < DTGV_Reinscription.Rows.Count; i++)
+                {
+                    if ((bool)DTGV_Reinscription.Rows[i].Cells[0].Value == true)//si chekbox est vrai afficher les information dans le formulaire
+                    {
+                        string codeEt = DTGV_Reinscription.Rows[i].Cells[1].Value.ToString();
+
+                        com.Open();
+
+                        SqlCommand cmd = new SqlCommand("SELECT photo FROM etudiant WHERE codeEt = @codeEt", com);
+                        cmd.Parameters.AddWithValue("@codeEt", codeEt);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            byte[] imageData = (byte[])reader["photo"];
+
+                            if (imageData != null)
+                            {
+
+                                using (MemoryStream ms = new MemoryStream(imageData))
+                                {
+                                    FRMM.Txt_IDEtudiant.Text = DTGV_Reinscription.Rows[i].Cells[1].Value.ToString();
+                                    FRMM.TxtNomEleve.Text = DTGV_Reinscription.Rows[i].Cells[2].Value.ToString();
+                                    FRMM.TxtPrenomEleve.Text = DTGV_Reinscription.Rows[i].Cells[3].Value.ToString();
+                                    FRMM.DtmNaissance.Text = DTGV_Reinscription.Rows[i].Cells[4].Value.ToString();
+                                    FRMM.TxtLieuNaissance.Text = DTGV_Reinscription.Rows[i].Cells[5].Value.ToString();
+                                    FRMM.CbbSexe.Text = DTGV_Reinscription.Rows[i].Cells[6].Value.ToString();
+                                    FRMM.TxtNationalite.Text = DTGV_Reinscription.Rows[i].Cells[7].Value.ToString();
+
+                                    FRMM.TxtID_Reinscription.Text = DTGV_Reinscription.Rows[i].Cells[9].Value.ToString();
+                                    FRMM.Lbl_Time.Text = DTGV_Reinscription.Rows[i].Cells[10].Value.ToString();
+
+                                    //FRMM.TxTID_FraisReinscrption.Text = DTGV_Reinscription.Rows[i].Cells[9].Value.ToString();
+                                    //FRMM.TxtFraisnscription.Text = DTGV_Reinscription.Rows[i].Cells[10].Value.ToString();
+
+                                    FRMM.Cmb_Classe.Text = DTGV_Reinscription.Rows[i].Cells[12].Value.ToString();
+                                    FRMM.Cmb_AnneeScolaire.Text = DTGV_Reinscription.Rows[i].Cells[14].Value.ToString();
+
+                                    if (DTGV_Reinscription.Rows[i].Cells[17].Value.ToString() == "Ancien")
+                                    {
+                                        FRMM.RB_Ancien.Checked = true;
+                                    }
+                                    if (DTGV_Reinscription.Rows[i].Cells[17].Value.ToString() == "Nouveau")
+                                    {
+                                        FRMM.RB_Nouveau.Checked = true;
+                                    }
+
+                                    FRMM.P_Photo.Image = Image.FromStream(ms);
+                                }
+                            }
+                        }
+                        com.Close();
+                    }
+                }
+                FRMM.Btn_Enregistrer.Visible = false;
+                FRMM.Lbl_afficher.Text = "MODIFIER LA REINSCRIPTION DE l'ELEVE";
+                FRMM.Show();
+            }
+            else
+            {
+                MessageBox.Show(SelectVerif(), "Modification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Btn_Photo_Click(object sender, EventArgs e)
+        {
+            if (SelectVerif() != null)
+            {
+                MessageBox.Show(SelectVerif(), "sélectionné", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                for (int i = 0; i < DTGV_Reinscription.Rows.Count; i++)
+                {
+                    if ((bool)DTGV_Reinscription.Rows[i].Cells[0].Value == true)
+                    {
+                        string codeEt = DTGV_Reinscription.Rows[i].Cells[1].Value.ToString();
+
+                        com.Open();
+
+                        SqlCommand cmd = new SqlCommand("SELECT photo, NmEt, PrnmEt FROM etudiant WHERE codeEt = @codeEt", com);
+                        cmd.Parameters.AddWithValue("@codeEt", codeEt);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            byte[] imageData = (byte[])reader["photo"];
+                            string nom = reader["NmEt"].ToString();
+                            string prenom = reader["PrnmEt"].ToString();
+
+                            if (imageData != null)
+                            {
+                                using (MemoryStream ms = new MemoryStream(imageData))
+                                {
+                                    PL.FRM_Affiche_Photo FAP = new PL.FRM_Affiche_Photo();
+                                    FAP.PT_AffichePhoto.Image = Image.FromStream(ms);
+                                    FAP.LB_AffichePhoto.Text = nom + " " + prenom;
+                                    FAP.ShowDialog();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Aucune photo trouvée pour l'étudiant sélectionné");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Aucune information trouvée pour l'étudiant sélectionné");
+                        }
+                        com.Close();
+                    }
+                }
+            }
+        }
+
+        private void Btn_SupprimerR_Click(object sender, EventArgs e)
+        {
+            if (SelectVerif() == "Selectionner")
+            {
+                MessageBox.Show(SelectVerif(), "Suppresion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult DR = MessageBox.Show("Voulez-vous vraiment supprimer", "Suppresion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (DR == DialogResult.Yes)
+                {
+                    //verification de combien de ligne selectionner
+                    foreach (DataGridViewRow item in DTGV_Reinscription.Rows)
+                    {
+                        if (bool.Parse(item.Cells[0].Value.ToString()))// si la ligne est cocher
+                        {
+                            com.Open();
+
+                            // Delete data into inscrire table
+                            singh.DeleteCommand = new SqlCommand("DELETE FROM reinscription WHERE IDReincription=@IDReincription", com);
+                            singh.DeleteCommand.Parameters.AddWithValue("@IDReincription", item.Cells[9].Value.ToString());
+                            singh.DeleteCommand.ExecuteNonQuery();
+
+                            com.Close();
+                        }
+                    }
+                    //actualiser le datagrid view
+                    //Actualisedatagrid();
+                    //ActualiserDatagrid();
+                    MessageBox.Show("Les données son supprimer avec succes", "Suppresion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    MessageBox.Show("Supprimer est annuler", "Suppresion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
     }
 }
